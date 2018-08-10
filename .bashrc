@@ -8,6 +8,7 @@ alias l='ls -CF'
 alias la='ls -A'
 alias ll='ls -alF'
 alias ls='ls -F'
+# Pass -X to less so it doesn't clear the screen on exit.
 alias more='less -X'
 alias type='less -X'
 
