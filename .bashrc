@@ -1,3 +1,4 @@
+alias copy='cp'
 alias cr='pushd $CLARIFAI_ROOT'
 alias del='rm'
 alias egrep='egrep --color=auto'
@@ -24,6 +25,10 @@ fi
 
 if [[ $USER == lambert.wixson]]; then
     alias scl='ssh clarifai@localhost'
+fi
+
+if [[ $HOSTNAME == chrome-c-gpu-node-1 ]]; then
+    alias eval1='docker exec -it eval-1 bash -l'
 fi
 
 # Disable shell exit upon ctrl-D (unless the user hits ctrl-D 999 times)
