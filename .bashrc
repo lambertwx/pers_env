@@ -21,6 +21,10 @@ if [[ $(uname -s) == Darwin ]]; then
 else
     alias e='emacs'
 fi
-   
+
+if [[ $USER == lambert.wixson]]; then
+    alias scl='ssh clarifai@localhost'
+fi
+
 # Disable shell exit upon ctrl-D (unless the user hits ctrl-D 999 times)
 export IGNOREEOF=999
