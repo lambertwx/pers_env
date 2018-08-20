@@ -13,7 +13,9 @@ alias ls='ls -F'
 alias more='less -X'
 alias type='less -X'
 
+# If we're on the Mac
 if [[ $(uname -s) == Darwin ]]; then
+    alias act3='deactivate; source /Users/lambert/anaconda3/bin/activate'
     alias e='aquamacs'
     alias ex='open'
 
