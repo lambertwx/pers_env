@@ -25,7 +25,7 @@ else
     alias e='emacs'
 fi
 
-if [[ $USER == lambert.wixson]]; then
+if [[ $USER == lambert.wixson ]]; then
     alias scl='ssh clarifai@localhost'
 fi
 
