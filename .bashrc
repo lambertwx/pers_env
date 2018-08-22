@@ -26,6 +26,7 @@ else
 fi
 
 if [[ $USER == lambert.wixson ]]; then
+    alias fire='ps gux | grep firefox'
     alias scl='ssh clarifai@localhost'
 fi
 
