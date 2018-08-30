@@ -1,3 +1,9 @@
+# Change your command prompt to indicate whether your running in screen or tmux
+if [ -n "$STY" ]; then export PS1="(screen) $PS1"; fi
+if [ -n "$TMUX" ]; then export PS1="(tmux) $PS1"; fi
+
+################################## Aliases
+
 alias copy='cp'
 alias cr='pushd $CLARIFAI_ROOT'
 alias del='rm'
