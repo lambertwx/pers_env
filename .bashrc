@@ -32,7 +32,8 @@ else
 fi
 
 if [[ $USER == lambert.wixson ]]; then
-    alias fire='ps gux | grep firefox'
+    alias psfire='ps gux | grep firefox'
+    alias psvnc='ps gux --sort -etime | grep -i xvnc'
     alias scl='ssh clarifai@localhost'
 fi
 
