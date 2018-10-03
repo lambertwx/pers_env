@@ -1,0 +1,15 @@
+# Start login shell so it sources things properly.
+shell -$SHELL
+
+# Suppress initial message
+startup_message off
+
+# Special key:
+escape ^Ww
+
+defscrollback 10000
+# Allow Ctrl-S/Q for emacs
+defflow off
+
+
+
