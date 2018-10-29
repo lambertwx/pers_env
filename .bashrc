@@ -43,3 +43,8 @@ fi
 
 # Disable shell exit upon ctrl-D (unless the user hits ctrl-D 999 times)
 export IGNOREEOF=999
+
+# Set up git tab completion.
+# To enable this on Mac, you have to do: brew install bash-completion
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
