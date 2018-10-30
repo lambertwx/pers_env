@@ -21,6 +21,8 @@ alias type='less -X'
 
 # If we're on the Mac
 if [[ $(uname -s) == Darwin ]]; then
+    # Copy laptop to colo
+    alias 2co='rsync -r --exclude-from ~/work/PYSYNC_IGNORE.txt --exclude='*.pyc' --update --verbose ~/work/clarifai/* lambert@q9:/home/lambert/work/clar-sync'
     alias act3='deactivate; source /Users/lambert/anaconda3/bin/activate'
     alias e='aquamacs'
     alias ex='open'

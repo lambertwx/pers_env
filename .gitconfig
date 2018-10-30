@@ -1,0 +1,29 @@
+##### This is not the entire .gitconfig one should have.
+##### These are just settings that I should include in any .gitconfig I use.
+
+[core]
+	editor = emacs
+	excludesfile = /Users/lambert/.gitignore_global
+
+# Change these to choose which tool should be used for diffs and merges.  The tool settings are below.
+[diff]
+	tool = diffmerge
+[merge]
+	tool = diffmerge
+
+########## Tool settings for different tools
+
+# I put these here using the commands from https://sourcegear.com/diffmerge/webhelp/sec__git__mac.html
+[difftool "diffmerge"]
+	cmd = /usr/local/bin/diffmerge \"$LOCAL\" \"$REMOTE\"
+[mergetool "diffmerge"]
+	trustExitCode = true
+	cmd = /usr/local/bin/diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+
+# Sourcetree's settings were automatically put here by the Sourcetree installer.
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
