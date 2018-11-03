@@ -5,6 +5,7 @@ if [ -n "$TMUX" ]; then export PS1="(tmux) $PS1"; fi
 ################################## Aliases
 
 alias copy='cp'
+alias cn='pushd ~/work/notebooks'
 alias cr='pushd $CLARIFAI_ROOT'
 alias del='rm'
 alias egrep='egrep --color=auto'
@@ -17,7 +18,9 @@ alias ll='ls -alF'
 alias ls='ls -F'
 # Pass -X to less so it doesn't clear the screen on exit.
 alias more='less -X'
+alias sls='screen -list'
 alias type='less -X'
+
 
 # If we're on the Mac
 if [[ $(uname -s) == Darwin ]]; then
@@ -43,3 +46,20 @@ fi
 
 # Disable shell exit upon ctrl-D (unless the user hits ctrl-D 999 times)
 export IGNOREEOF=999
+
+# Function to remove a folder from your PYTHONPATH
+# (from https://unix.stackexchange.com/questions/108873/removing-a-directory-from-path )
+function pypath_remove {
+    # Delete path by parts so we can never accidentally remove sub paths
+    PYTHONPATH=${PYTHONPATH//":$1:"/":"} # delete any instances in the middle
+    PYTHONPATH=${PYTHONPATH/#"$1:"/} # delete any instance at the beginning
+    PYTHONPATH=${PYTHONPATH/%":$1"/} # delete any instance in the at the end
+}
+
+# Switch to sync folder
+function sws {
+    pypath_remove /home/lambert/work/clarifai
+    export CLARIFAI_ROOT=/home/lambert/work/clar-sync
+    PYTHONPATH=$CLARIFAI_ROOT:$PYTHONPATH
+    cd $CLARIFAI_ROOT
+}
