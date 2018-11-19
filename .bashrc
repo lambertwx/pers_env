@@ -72,9 +72,10 @@ function sws {
     cd $CLARIFAI_ROOT
 }
 
-
 # Set up git tab completion.
 # To enable this on Mac, you have to do: brew install bash-completion
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
-
+# Set up virtualenv switching with tab completion
+# To enable this on Mac, you have to do: pip install virtualenvwrapper
+source ~/virtualenv/v1/bin/virtualenvwrapper.sh
