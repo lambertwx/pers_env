@@ -34,6 +34,14 @@ if [[ $(uname -s) == Darwin ]]; then
 fi
 
 ##### Aliases #####
+
+### Aliases that work in all environments.
+
+# Get the current branch
+alias gc="git branch | awk '/\*/ {print \$0; }'"
+alias gd='git difftool'
+
+### Environment-specific aliases
 # If we're on the Mac
 if [[ $(uname -s) == Darwin ]]; then
     # Copy laptop to colo
@@ -59,8 +67,8 @@ if [[ $HOSTNAME == chrome-c-gpu-node-1 ]]; then
     alias eval1='docker exec -it eval-1 bash -l'
 fi
 
+##### Functions #####
 
-#
 # Function to remove a folder from your PYTHONPATH
 # (from https://unix.stackexchange.com/questions/108873/removing-a-directory-from-path )
 function pypath_remove {
