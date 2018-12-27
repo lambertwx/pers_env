@@ -13,6 +13,8 @@
     (insert "\n")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; The load path ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ (setq load-path (append '("~/pers_env/emacs/lib") 
+			  load-path))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Key bindings ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -21,3 +23,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Mode settings ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq fill-column 120)
+
+(require 'yaml-mode)     ; https://github.com/yoshiki/yaml-mode
