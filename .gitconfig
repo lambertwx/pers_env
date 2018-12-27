@@ -7,10 +7,14 @@
 
 # Change these to choose which tool should be used for diffs and merges.  The tool settings are below.
 [diff]
-	tool = diffmerge
+	tool = araxis
 [merge]
-	tool = diffmerge
+	tool = araxis
 
+[difftool]
+        # Prevent "git difftool" shell command from prompting "Launch <diffprog>?".  Same as "git difftool -y".
+	prompt = false
+	
 ########## Tool settings for different tools
 
 # I put these here using the commands from https://sourcegear.com/diffmerge/webhelp/sec__git__mac.html
