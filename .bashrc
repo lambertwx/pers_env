@@ -27,7 +27,13 @@ alias ls='ls -F'
 alias more='less -X'
 alias type='less -X'
 
+##### Paths #####
+if [[ $(uname -s) == Darwin ]]; then
+    export PATH_ARAXIS=/Applications/Araxis\ Merge.app/Contents/Utilities
+    export PATH=$PATH:$PATH_ARAXIS
+fi
 
+##### Aliases #####
 # If we're on the Mac
 if [[ $(uname -s) == Darwin ]]; then
     # Copy laptop to colo
