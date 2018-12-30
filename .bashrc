@@ -40,6 +40,7 @@ alias ls='ls -FL'          # The -L means to follow symlinks instead of displayi
 
 # Pass -X to less so it doesn't clear the screen on exit.
 alias more='less -X'
+alias rmb='rm *~'
 alias type='less -X'
 
 
