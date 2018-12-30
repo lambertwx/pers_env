@@ -7,9 +7,15 @@ if [ -n "$TMUX" ]; then export PS1="(tmux) $PS1"; fi
 # Disable shell exit upon ctrl-D (unless the user hits ctrl-D 999 times)
 export IGNOREEOF=999
 
-
+##### Paths #####
+if [[ $(uname -s) == Darwin ]]; then
+    export PATH_ARAXIS=/Applications/Araxis\ Merge.app/Contents/Utilities
+    export PATH=$PATH:$PATH_ARAXIS
+fi
 
 ################################## Aliases
+
+### Aliases that work in all environments.
 
 alias copy='cp'
 alias cn='pushd ~/work/notebooks'
@@ -17,29 +23,25 @@ alias cr='pushd $CLARIFAI_ROOT'
 alias del='rm'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
+
+# Get the current branch
+alias gc="git branch | awk '/\*/ {print \$0; }'"
+# Switch to the master branch
+alias gcm='git checkout master'
+alias gd='git difftool'
+
 alias grep='grep --color=auto'
 alias jnb='jupyter notebook --no-browser --notebook-dir=~/work'
-alias l='ls -CF'
+
+alias l='ls -CF'           # Use this instead of ls if you want to see symlinks
 alias la='ls -A'
 alias ll='ls -alF'
-alias ls='ls -F'
+alias ls='ls -FL'          # The -L means to follow symlinks instead of displaying them as @
+
 # Pass -X to less so it doesn't clear the screen on exit.
 alias more='less -X'
 alias type='less -X'
 
-##### Paths #####
-if [[ $(uname -s) == Darwin ]]; then
-    export PATH_ARAXIS=/Applications/Araxis\ Merge.app/Contents/Utilities
-    export PATH=$PATH:$PATH_ARAXIS
-fi
-
-##### Aliases #####
-
-### Aliases that work in all environments.
-
-# Get the current branch
-alias gc="git branch | awk '/\*/ {print \$0; }'"
-alias gd='git difftool'
 
 ### Environment-specific aliases
 # If we're on the Mac
@@ -52,6 +54,7 @@ if [[ $(uname -s) == Darwin ]]; then
 
     # Alias "git" to run the "hub" add-on (https://hub.github.com)
     eval "$(hub alias -s)"
+
 else
     alias e='emacs'
     alias sls='screen -list'
