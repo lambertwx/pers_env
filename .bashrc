@@ -28,9 +28,11 @@ alias fgrep='fgrep --color=auto'
 alias gc="git branch | awk '/\*/ {print \$0; }'"
 # Switch to the master branch
 alias gcm='git checkout master'
-alias gd='git difftool'
+alias gd='alias_gd'        # git difftool. See functions below.
+alias gs='git status | more'
 
 alias grep='grep --color=auto'
+alias h='history'
 alias jnb='jupyter notebook --no-browser --notebook-dir=~/work'
 
 alias l='ls -CF'           # Use this instead of ls if you want to see symlinks
@@ -38,10 +40,10 @@ alias la='ls -A'
 alias ll='ls -alF'
 alias ls='ls -FL'          # The -L means to follow symlinks instead of displaying them as @
 
-# Pass -X to less so it doesn't clear the screen on exit.
-alias more='less -X'
+# Pass -X to less so it doesn't clear the screen on exit.  -F so it exits if file fits on the screen
+alias more='less -XF'
 alias rmb='rm *~'
-alias type='less -X'
+alias type='less -XF'
 
 
 ### Environment-specific aliases
@@ -50,6 +52,7 @@ if [[ $(uname -s) == Darwin ]]; then
     # Copy laptop to colo
     alias 2co='rsync -r --exclude-from ~/work/PYSYNC_IGNORE.txt --exclude='*.pyc' --update --verbose ~/work/clarifai/* lambert@q9:/home/lambert/work/clar-sync'
     alias act3='deactivate; source /Users/lambert/anaconda3/bin/activate'
+    alias adiff='"${PATH_ARAXIS}"/compare'  # We do the double-quote to handle the fact that PATH_ARAXIS has a space in it.
     alias e='aquamacs'
     alias ex='open'
 
@@ -72,6 +75,11 @@ if [[ $HOSTNAME == chrome-c-gpu-node-1 ]]; then
 fi
 
 ##### Functions #####
+
+# Had to put in function because we want to pass args AND run in background.  You can't do this with a regular alias.
+function alias_gd {
+    git difftool "$@" &
+}
 
 # Function to remove a folder from your PYTHONPATH
 # (from https://unix.stackexchange.com/questions/108873/removing-a-directory-from-path )
