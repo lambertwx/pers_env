@@ -33,7 +33,14 @@ alias gs='git status | more'
 
 alias grep='grep --color=auto'
 alias h='history'
-alias jnb='jupyter notebook --no-browser --notebook-dir=~/work'
+
+# By default Jupyter opens port 8888 but this can conflict with web
+# proxies like Charles that don't pick a new port automatically if the port
+# they want is taken.  So have Jupyter starting trying at 8900 and work up
+# up from there.
+alias jnb='jupyter notebook --no-browser --notebook-dir=~/work --port=8900'
+
+alias klogs='ls -l $CLARIFAI_ROOT/go/src/clarifai/*.log'
 
 alias l='ls -CF'           # Use this instead of ls if you want to see symlinks
 alias la='ls -A'
