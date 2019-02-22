@@ -7,6 +7,10 @@ if [ -n "$TMUX" ]; then export PS1="(tmux) $PS1"; fi
 # Disable shell exit upon ctrl-D (unless the user hits ctrl-D 999 times)
 export IGNOREEOF=999
 
+# This is useful for finding some utility scripts.  But you don't have to put this into your path,
+# since these scripts can only be run as "python foo.py".
+export PATH_TENFLOW_PYTOOLS=$VIRTUAL_ENV/lib/python2.7/site-packages/tensorflow/python/tools
+
 ##### Paths #####
 if [[ $(uname -s) == Darwin ]]; then
     export PATH_ARAXIS=/Applications/Araxis\ Merge.app/Contents/Utilities
