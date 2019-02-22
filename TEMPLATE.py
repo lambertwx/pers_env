@@ -30,6 +30,11 @@ def get_args():
                       help = "Deployment level: dev, staging, prod")
   parser.add_argument('--begin_stage', type=int, default=1, help="First stage to execute")
   parser.add_argument('--end_stage', type=int, default=999, help="Last stage to execute")
+
+  # Example of how to do boolean
+  parser.add_argument('--profile', default=False, action='store_true',
+                      help="If set, performs Tensorflow profiling  (default is False)")
+
   parser.add_argument("filename", type=str, "positional arg")
   args = parser.parse_args()
   return args
