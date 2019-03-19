@@ -24,6 +24,7 @@ export JB_DISABLE_BUFFERING=1
 ### Aliases that work in all environments.
 
 alias copy='cp'
+alias cls='clear'
 
 # Show all Clarifai-related environment variables.  The "-o posix" is to prevent set from showing one's bash functions.
 alias clv='set -o posix; set | grep CLARIFAI; set +o posix'
