@@ -58,6 +58,8 @@ alias la='ls -A'
 alias ll='ls -alF'
 alias ls='ls -FL'          # The -L means to follow symlinks instead of displaying them as @
 
+alias mpclip='mpv --keep-open --script-opts=osc-timems=yes,osc-visibility=always --pause'
+
 # Pass -X to less so it doesn't clear the screen on exit.  -F so it exits if file fits on the screen
 alias more='less -XF'
 alias rmb='rm *~'
@@ -77,6 +79,12 @@ if [[ $(uname -s) == Darwin ]]; then
     # Alias "git" to run the "hub" add-on (https://hub.github.com)
     eval "$(hub alias -s)"
 
+    # Mount colo dirs
+    function mountc {
+	sshfs lambert@q18:/mnt/nfs/lambert ~/CoH
+	sshfs lambert@q18:/mnt/scratch/1 ~/Co1
+	sshfs lambert@q18:/mnt/scratch/2 ~/Co2
+    }
 else
     alias e='emacs'
     alias sls='screen -list'
