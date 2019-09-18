@@ -33,6 +33,6 @@
 		
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Mode settings ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq fill-column 120)
+(setq-default fill-column 100)   ; For auto-fill
 
 (require 'yaml-mode)     ; https://github.com/yoshiki/yaml-mode

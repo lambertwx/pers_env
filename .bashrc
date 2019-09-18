@@ -62,7 +62,7 @@ alias mpclip='mpv --keep-open --script-opts=osc-timems=yes,osc-visibility=always
 
 # Pass -X to less so it doesn't clear the screen on exit.  -F so it exits if file fits on the screen
 alias more='less -XF'
-alias rmb='rm *~'
+alias rmb='rm *~ *.bak'
 alias type='less -XF'
 
 
@@ -84,6 +84,12 @@ if [[ $(uname -s) == Darwin ]]; then
 	sshfs lambert@q18:/mnt/nfs/lambert ~/CoH
 	sshfs lambert@q18:/mnt/scratch/1 ~/Co1
 	sshfs lambert@q18:/mnt/scratch/2 ~/Co2
+    }
+
+    function umountc {
+	diskutil unmount ~/CoH
+	diskutil unmount ~/Co1
+	diskutil unmount ~/Co2
     }
 else
     alias e='emacs'
