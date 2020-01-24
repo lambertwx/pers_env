@@ -17,6 +17,9 @@
 	
 ########## Tool settings for different tools
 
+# Nothing necessary for Araxis if you have 
+# /Applications/Araxis Merge.app/Contents/Utilities in your path.
+
 # I put these here using the commands from https://sourcegear.com/diffmerge/webhelp/sec__git__mac.html
 [difftool "diffmerge"]
 	cmd = /usr/local/bin/diffmerge \"$LOCAL\" \"$REMOTE\"
