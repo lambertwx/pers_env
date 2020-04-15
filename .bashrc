@@ -38,6 +38,7 @@ alias cls='clear'
 
 ### Special versions of cd and pushd 
 alias cd-fma='pushd ~/zillow/rmx/experiences/web/floor-map-annotator/content'
+alias cd-rot='pushd ~/zillow/rmx/scripts/rotation_support'
 # cd to the root of your current git repo
 alias cdg='cd ./$(git rev-parse --show-cdup)'
 alias cn='pushd ~/work/notebooks'
@@ -53,6 +54,7 @@ alias gc="git branch | awk '/\*/ {print \$0; }'"
 # Switch to the master branch
 alias gcm='git checkout master'
 alias gd='alias_gd'        # git difftool. See functions below.
+alias gitcomm='git commit --no-verify'
 alias gs='git status | more'
 
 alias grep='grep --color=auto'
@@ -71,15 +73,31 @@ alias la='ls -A'
 alias ll='ls -alF'
 alias ls='ls -FL'          # The -L means to follow symlinks instead of displaying them as @
 
-alias mpclip='mpv --keep-open --script-opts=osc-timems=yes,osc-visibility=always --pause'
+### Aliases for mpv.  Note that many other settings for my mpv are in my ~/.config/mpv files.
+# See my "video players" google doc https://docs.google.com/document/d/1C371RczJEvqdlsTsRCCoop3zrBiD3RQynz40Jb0uo2s/edit#
+
+# Play a clip or a set of image files as a clip.  Use "--mf-fps" to set the frame rate.
+alias mpclip='mpv --merge-files'
+
+# Play a set of images with each images being one element of a playlist.  
+# We set image-display-duration to 1 because as of 3/1/20
+# mpv has a bug that if you set the image-display-duration to be less than 1, when you step to the
+# prev playlist it may jump over multiple playlists.
+alias mpim='mpv --image-display-duration=1'
+
+###
+
 alias mv='mv -i'
 
 # Pass -X to less so it doesn't clear the screen on exit.  -F so it exits if file fits on the screen
 alias more='less -XF'
+alias nmake='make'
 alias rmb='rm *~ *.bak'
 
 # Sets up conda env.
 alias setcon='source ~/pers_env/bin/setcon.sh'
+# Set up WebAssembly env.
+alias set_wasm='source ~/pers_env/bin/set_wasm.sh'
 
 #alias type='less -XF'  # Can't do this because type is a builtin in bash.
 
@@ -106,17 +124,19 @@ if [[ $(uname -s) == Darwin ]]; then
     # eval "$(hub alias -s)"
 
     # Mount colo dirs
-    function mountc {
-	sshfs lambert@q18:/mnt/nfs/lambert ~/CoH
-	sshfs lambert@q18:/mnt/scratch/1 ~/Co1
-	sshfs lambert@q18:/mnt/scratch/2 ~/Co2
-    }
+    # Copy these mountc() and umountc() to your Mac's .bash_profile and fill in appropriately,
+    # so that your userid and machines aren't visible when you check in to gitlab.
+    #function mountc {
+	# sshfs lambert@q18:/mnt/nfs/lambert ~/CoH
+	# sshfs lambert@q18:/mnt/scratch/1 ~/Co1
+	# sshfs lambert@q18:/mnt/scratch/2 ~/Co2
+    #}
 
-    function umountc {
-	diskutil unmount ~/CoH
-	diskutil unmount ~/Co1
-	diskutil unmount ~/Co2
-    }
+    #function umountc {
+	#diskutil unmount ~/CoH
+	#diskutil unmount ~/Co1
+	#diskutil unmount ~/Co2
+    #}
 else
     alias e='emacs'
     alias sls='screen -list'
