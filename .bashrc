@@ -38,6 +38,7 @@ alias cls='clear'
 
 ### Special versions of cd and pushd 
 alias cd-fma='pushd ~/zillow/rmx/experiences/web/floor-map-annotator/content'
+alias cd-fmascratch='pushd ~/zillow/rmx/experiences/web/floor-map-annotator-scratch/content'
 alias cd-rot='pushd ~/zillow/rmx/scripts/rotation_support'
 # cd to the root of your current git repo
 alias cdg='cd ./$(git rev-parse --show-cdup)'
@@ -59,6 +60,7 @@ alias gs='git status | more'
 
 alias grep='grep --color=auto'
 alias h='history'
+alias j='jobs'
 
 # By default Jupyter opens port 8888 but this can conflict with web
 # proxies like Charles that don't pick a new port automatically if the port
@@ -165,6 +167,13 @@ function awsokta {
     ~/zillow/TOOL/okta-aws-cli-assume-role/awsokta
 }
 
+# Function to remove compiled python code below the current folder
+# Works on macOS and Linux
+# From https://stackoverflow.com/questions/28991015/python3-project-remove-pycache-folders-and-pyc-files
+pyclean () {
+    find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
+}
+
 # Function to remove a folder from your PYTHONPATH
 # (from https://unix.stackexchange.com/questions/108873/removing-a-directory-from-path )
 function pypath_remove {
@@ -195,4 +204,9 @@ if [ 0 == 1 ]; then
   # Set up virtualenv switching with tab completion
   # To enable this on Mac, you have to do: pip install virtualenvwrapper
   source ~/virtualenv/v1/bin/virtualenvwrapper.sh
+fi
+
+# Set up pyenv shims
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
 fi
