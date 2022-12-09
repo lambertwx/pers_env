@@ -17,8 +17,9 @@
 	
 ########## Tool settings for different tools
 
-# Nothing necessary for Araxis if you have 
-# /Applications/Araxis Merge.app/Contents/Utilities in your path.
+[difftool "araxis"]
+	cmd = \"/Applications/Araxis Merge.app/Contents/Utilities/compare\"  \"$LOCAL\" \"$REMOTE\"
+	trustExitCode = true
 
 # I put these here using the commands from https://sourcegear.com/diffmerge/webhelp/sec__git__mac.html
 [difftool "diffmerge"]
@@ -34,3 +35,6 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+
+[pull]
+	rebase = false

@@ -16,6 +16,8 @@ export PATH_TENFLOW_PYTOOLS=$VIRTUAL_ENV/lib/python2.7/site-packages/tensorflow/
 # This is where "brew install qt" installed it. 
 export CMAKE_PREFIX_PATH=/usr/local/opt/qt5
 
+export AWS_DEFAULT_REGION=us-west-2
+
 ##### Paths #####
 if [[ $(uname -s) == Darwin ]]; then
     export PATH_AQUAMACS=/Applications/Aquamacs.app/Contents/MacOS/bin
@@ -39,6 +41,7 @@ alias cls='clear'
 ### Special versions of cd and pushd 
 alias cd-fma='pushd ~/zillow/rmx/experiences/web/floor-map-annotator/content'
 alias cd-fmascratch='pushd ~/zillow/rmx/experiences/web/floor-map-annotator-scratch/content'
+alias cd-insights='pushd ~/zillow/rmx/libs/egg.floor-map-insights'
 alias cd-rot='pushd ~/zillow/rmx/scripts/rotation_support'
 # cd to the root of your current git repo
 alias cdg='cd ./$(git rev-parse --show-cdup)'
@@ -49,6 +52,9 @@ alias cp='cp -i'
 alias del='rm'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
+
+# See my "ImageJ (Fiji)" google doc https://docs.google.com/document/d/1Am_T5N_Zjp_vw4nl3geOdwF5RmjJYYUW4jFsBQXPg5s/edit#
+alias fiji='~/bin/Fiji.app/Contents/MacOS/ImageJ-macosx'
 
 # Get the current branch
 alias gc="git branch | awk '/\*/ {print \$0; }'"
@@ -165,6 +171,20 @@ function alias_gd {
 # So a symlink doesn't work.
 function awsokta {
     ~/zillow/TOOL/okta-aws-cli-assume-role/awsokta
+}
+
+# Bring CVAT up
+function cvat_up {
+    pushd ~/party3/cvat
+    docker-compose -f docker-compose.yml -f components/analytics/docker-compose.analytics.yml -f docker-compose.override.yml up -d
+    popd
+}
+
+# Bring CVAT down
+function cvat_down {
+    pushd ~/party3/cvat
+    docker-compose -f docker-compose.yml -f components/analytics/docker-compose.analytics.yml -f docker-compose.override.yml down
+    popd
 }
 
 # Function to remove compiled python code below the current folder
