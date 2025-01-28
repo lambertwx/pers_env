@@ -35,6 +35,7 @@ export JB_DISABLE_BUFFERING=1
 
 ###### Aliases that work in all environments.
 
+alias cd='pushd'
 alias copy='cp'
 alias cls='clear'
 
@@ -56,11 +57,38 @@ alias fgrep='fgrep --color=auto'
 # See my "ImageJ (Fiji)" google doc https://docs.google.com/document/d/1Am_T5N_Zjp_vw4nl3geOdwF5RmjJYYUW4jFsBQXPg5s/edit#
 alias fiji='~/bin/Fiji.app/Contents/MacOS/ImageJ-macosx'
 
+
 # Get the current branch
 alias gc="git branch | awk '/\*/ {print \$0; }'"
 # Switch to the master branch
 alias gcm='git checkout master'
 alias gd='alias_gd'        # git difftool. See functions below.
+
+# Define a function that appends $PWD to each argument (if not starting with dash).
+function prepend_pwd()  {
+    local result=""
+
+    for arg in "$@"; do
+        if [[ "${arg}" != -* ]]; then
+            result+="${PWD}/${arg} "
+        else
+            result+="${arg} "
+        fi
+    done
+
+    echo "$result"
+}
+    
+# The -n flag tells "open" to open a new instance of GIMP, because if one is already running it will come to the forefront but
+# the files you specify on this invocation will not get loaded into it.  Also we have to prepend PWD to the filenames because
+# when it's invoked via "open" it runs in a different working dir.  We run it via "open" because if you invoke it directly at the
+# console it spews a bunch of warnings that you don't want to see.
+function gimp {
+    local args=$(prepend_pwd $@)
+
+    open -n -a /Applications/GIMP.app --args $args
+}
+
 alias gitcomm='git commit --no-verify'
 alias gs='git status | more'
 
